@@ -1,0 +1,33 @@
+{
+  "name": "wadcoursework",
+  "version": "1.0.0",
+  "description": "A wb app for booking dance classes and for managing courses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LewisH109/WADCoursework.git"
+  },
+  "keywords": [
+    "[\"node.js\"",
+    "\"express\"",
+    "\"web\"",
+    "\"dance\"",
+    "\"booking\"]"
+  ],
+  "author": "Lewis Hammond",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LewisH109/WADCoursework/issues"
+  },
+  "homepage": "https://github.com/LewisH109/WADCoursework#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "gray-nedb": "^1.8.3",
+    "mustache-express": "^1.3.2"
+  }
+}
