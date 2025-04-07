@@ -15,3 +15,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Session managment
+app.use(session({
+    secret: 'SecretKey',
+    resave: false,
+    saveUninitialized: true,
+}))
+
+//Routes
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Welcome to the Dance Booking System' });
+});
+
+//Start Server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server started on ${PORT}`);
+});
