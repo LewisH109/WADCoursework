@@ -14,4 +14,13 @@ class UserModel {
             this.db.insert({ username, password: hash }, callback);
         });
     }
+    // Find a user by username
+    findUser(username, callback) {
+        this.db.findOne({username}, (err, docs) => {
+            if (err) return callback(err);
+            callback(null, docs[0]);
+        });
+    }
 }
+
+module.exports = new UserModel('./data/users.db');
