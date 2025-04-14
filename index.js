@@ -43,4 +43,9 @@ app,get('/courses', async (req, res) => {
     }
 });
 
-//
+//Route for the organisers to view and add course form
+app.get('/organiser/add-course', (req, res) => {
+    res.render('add-course', { title: 'Add a New Course' });
+});
+
+//Handle Course Creation
