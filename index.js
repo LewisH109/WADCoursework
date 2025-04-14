@@ -100,3 +100,9 @@ app.post('/login', (req, res) => {
         });
     });
 });
+
+//Protected Organiser Dashnboard Route
+app.get('/organiser/dashboard', (req, res) => {
+    if (!req.session.user) return res.redirect('/login');
+    res.render('dashboard', { title: 'Organiser Dashboard', user: req.session.user });
+});
