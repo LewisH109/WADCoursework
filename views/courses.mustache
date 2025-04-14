@@ -2,6 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Courses</title>
+    <title>{{ title }}</title>
     <link rel="stylesheet" href="./public/styles.css">
 </head>
+<body>
+    <h1>{{ title }}</h1>
+    {{#courses}}
+        <div class="course-card">
+            <h2>{{{ name}}}</h2>
+            <p><strong>Duration:</strong> {{{ duration }}}</p>
+            <p><strong>Schedule:</strong> {{ schedule }}</p>
+            <p><strong>Description:</strong> {{ description }}</p>
+            <p><strong>Location:</strong> {{ location }}</p>
+            <p><strong>Price:</strong> {{{ price }}}</p>
+        </div>
+        {{/courses}}
+        <a href="/organiser.add-course">Add New Course (Organiseres Only)</a>
+</body>
+</html>
