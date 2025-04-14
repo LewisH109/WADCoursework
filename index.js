@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mustacheExpress = require('mustache-express');
 const session = require('express-session');
+const courseModel = require('./models/courseModel');
 
 const app = express();
 
@@ -31,3 +32,15 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server started on ${PORT}`);
 });
+
+//Route to display all courses
+app,get('/courses', async (req, res) => {
+    try {
+        const courses = await courseModel.getAllCourses();
+        res.render('courses', {title: 'Available Dance Courses', courses});
+    } catch (err) {
+        res.status(500).send('Error retrieving courses');
+    }
+});
+
+//
