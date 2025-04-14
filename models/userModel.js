@@ -16,11 +16,17 @@ class UserModel {
     }
     // Find a user by username
     findUser(username, callback) {
-        this.db.findOne({username}, (err, docs) => {
-            if (err) return callback(err);
-            callback(null, docs[0]);
+        this.db.find({ username }, (err, docs) => {
+          if (err) return callback(err);
+      
+          // Check if docs is null or empty
+          if (!docs || docs.length === 0) {
+            return callback(null, null);
+          }
+      
+          callback(null, docs[0]);
         });
-    }
+      }
 }
 
 module.exports = new UserModel('./data/users.db');

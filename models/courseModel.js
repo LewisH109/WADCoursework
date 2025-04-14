@@ -1,6 +1,6 @@
 const Datastore = require('gray-nedb');
 
-class Coursemodel {
+class CourseModel {
     constructor(dbFilePath) {
         this.db = new Datastore({ filename: dbFilePath, autoload: true });
     }
@@ -19,9 +19,9 @@ class Coursemodel {
     }
 
     //Add a new course
-    addCourse(course) {
+    addCourse(course, callback) {
         this.db.insert(course, callback);
     }
 }
 
-module.exports = new Coursemodel('./data/course.db');
+module.exports = new CourseModel('./data/course.db');

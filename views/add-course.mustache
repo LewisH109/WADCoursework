@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="./public/styles.css">
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <form action="/organiser/add-course" method="POST">
+        <div>
+            <label for="name">Course Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="duration">Duration:</label>
+            <input type="text" id="duration" name="duration" required>
+        </div>
+        <div>
+            <label for="schedule">Schedule:</label>
+            <input type="text" id="schedule" name="schedule" required>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+        </div>
+        <div>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+        </div>
+        <button type="submit">Add Course</button>
+    </form>
+</body>
+</html>

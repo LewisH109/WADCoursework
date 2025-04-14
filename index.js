@@ -51,11 +51,17 @@ app.get('/organiser/add-course', (req, res) => {
 });
 
 //Handle Course Creation
-app.post('./organiser/add-course', (req, res) => {
-    const { name, duration, schedule, description, loaction, price } = req.body;
+app.post('/organiser/add-course', (req, res) => {
+    console.log('POST /organiser/add-course received');
+    const { name, duration, schedule, description, location, price } = req.body;
     const course = { name, duration, schedule, description, location, price };
+
     courseModel.addCourse(course, (err, newDoc) => {
-        if (err) return res.status(500).send('Error adding course');
+        if (err) { 
+            console.error('Error adding course:', err);
+            return res.status(500).send('Error adding course'); 
+        }
+        console.log('Course added:', newDoc);
         res.redirect('/courses');
     });
 });
