@@ -25,7 +25,7 @@ app.use(session({
 }))
 
 //Routes
-app.get('/', (req, res) => {
+app.get('/index', (req, res) => {
     res.render('index', { title: 'Welcome to the Dance Booking System' });
 });
 
@@ -36,7 +36,7 @@ app.listen(PORT, () => {
 });
 
 //Route to display all courses
-app,get('/courses', async (req, res) => {
+app.get('/courses', async (req, res) => {
     try {
         const courses = await courseModel.getAllCourses();
         res.render('courses', {title: 'Available Dance Courses', courses});
