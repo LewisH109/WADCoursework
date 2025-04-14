@@ -79,3 +79,24 @@ app.post('/register', (req, res) => {
         });
     });
 });
+
+//Login (GET)
+app.get('/login', (req, res) => {
+    res.render('login', { title: 'Login as Organiser' });
+});
+
+//Login (POST)
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    userModel.findUser(username, (err, user) => {
+        if (!user) return res.status(400).send('User not found');
+        bcrpypt.compare(password, user.password, (err, result) => {
+            if (result) {
+                req.session.user = user;
+                res.redirect('/organiser/dashboard');
+            } else {
+                res.status(400).send('Invalid password');
+            }
+        });
+    });
+});
