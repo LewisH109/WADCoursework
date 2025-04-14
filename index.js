@@ -3,6 +3,8 @@ const path = require('path');
 const mustacheExpress = require('mustache-express');
 const session = require('express-session');
 const courseModel = require('./models/courseModel');
+const userModel = require('./models/userModel');
+const bcrpypt = require('bcrypt');
 
 const app = express();
 
@@ -55,5 +57,25 @@ app.post('./organiser/add-course', (req, res) => {
     courseModel.addCourse(course, (err, newDoc) => {
         if (err) return res.status(500).send('Error adding course');
         res.redirect('/courses');
+    });
+});
+
+//Registration (GET)
+app.get('/register', (req, res) => {
+    res.render('register', { title: 'Regisrer as Organiser'});
+});
+
+//Resistration (POST)
+app.post('/register', (req, res) => {
+    const { username, password } = req.body;
+    if (!username || !password) {
+        return res.status(400).send('Username and password are required');
+    }
+    userModel.findUser(username, (err, user) => {
+        if (user) return res.status(400).send('User already exists');
+        userModel.createUser(username, password, (err) => {
+            if (err) return res.status(500).send('Error creating user');
+            res.redirect('/login');
+        });
     });
 });
