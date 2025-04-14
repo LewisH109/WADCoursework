@@ -62,7 +62,7 @@ app.post('./organiser/add-course', (req, res) => {
 
 //Registration (GET)
 app.get('/register', (req, res) => {
-    res.render('register', { title: 'Regisrer as Organiser'});
+    res.render('register', { title: 'Register as Organiser'});
 });
 
 //Resistration (POST)
